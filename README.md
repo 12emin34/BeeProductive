@@ -2,6 +2,7 @@
 
 # Bee Productive
 
+This port is still WIP, things may be broken, use with caution.
 
 [>> Downloads <<](https://github.com/AllOfFabric/BeeProductive/releases)
 
