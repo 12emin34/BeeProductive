@@ -1,10 +1,12 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "io.github.alloffabric.beeproductive.mixin.compat.beebetter",
   "plugin": "io.github.alloffabric.beeproductive.hooks.BeeBetterMixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinModdedBeehiveBlockEntity",
-    "MixinModdedBeehiveBlock"
+    "MixinHiveAnalyzer",
+    "MixinModdedBeehiveBlock",
+    "MixinModdedBeehiveBlockEntity"
   ]
 }

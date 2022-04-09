@@ -14,13 +14,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BeeEntityRenderer.class)
 public class MixinBeeEntityRenderer {
 
-	@Inject(method = "getTexture", at = @At("HEAD"), cancellable = true)
-	private void injectCustomSkins(BeeEntity bee, CallbackInfoReturnable<Identifier> info) {
-		BeeComponent comp = BeeProductive.BEE_COMPONENT.get(bee);
-		Identifier id = comp.getTraitValue(BeeProdTraits.SKIN);
-		if (id.equals(BeeProdTraits.SKIN.getDefaultValue())) return;
-		if (bee.isAngry()) id = new Identifier(id.getNamespace(), id.getPath() + "_angry");
-		if (bee.hasNectar()) id = new Identifier(id.getNamespace(), id.getPath() + "_nectar");
-		info.setReturnValue(new Identifier(id.getNamespace(), id.getPath() + ".png"));
-	}
+    @Inject(method = "getTexture(Lnet/minecraft/entity/passive/BeeEntity;)Lnet/minecraft/util/Identifier;", at = @At("HEAD"), cancellable = true)
+    private void injectCustomSkins(BeeEntity bee, CallbackInfoReturnable<Identifier> info) {
+        BeeComponent comp = BeeProductive.BEE_COMPONENT.get(bee);
+        Identifier id = comp.getTraitValue(BeeProdTraits.SKIN);
+        if (id.equals(BeeProdTraits.SKIN.getDefaultValue())) return;
+        if (bee.hasAngerTime()) id = new Identifier(id.getNamespace(), id.getPath() + "_angry");
+        if (bee.hasNectar()) id = new Identifier(id.getNamespace(), id.getPath() + "_nectar");
+        info.setReturnValue(new Identifier(id.getNamespace(), id.getPath() + ".png"));
+    }
 }

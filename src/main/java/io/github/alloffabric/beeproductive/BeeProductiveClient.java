@@ -9,9 +9,9 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegi
 import net.minecraft.client.render.RenderLayer;
 
 public class BeeProductiveClient implements ClientModInitializer {
-	@Override
-	public void onInitializeClient() {
-		BlockRenderLayerMap.INSTANCE.putBlock(BeeProdBlocks.BEE_FEEDER, RenderLayer.getCutout());
-		BlockEntityRendererRegistry.INSTANCE.register(BeeProdBlockEntities.FEEDER_ENTITY, BeeFeederRenderer::new);
-	}
+    @Override
+    public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(BeeProdBlocks.BEE_FEEDER, RenderLayer.getCutout());
+        BlockEntityRendererRegistry.INSTANCE.register(BeeProdBlockEntities.FEEDER_ENTITY, BeeFeederRenderer::new);
+    }
 }

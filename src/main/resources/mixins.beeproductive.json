@@ -1,8 +1,10 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "io.github.alloffabric.beeproductive.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BeeAccessor",
     "MixinBeeEntity",
     "MixinBeeEntity$MixinPollinateGoal",
     "MixinBeehiveBlock",

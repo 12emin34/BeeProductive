@@ -3,9 +3,9 @@ package io.github.alloffabric.beeproductive.api.trait;
 import net.minecraft.nbt.Tag;
 
 public interface BeeTrait<T> {
-	T getDefaultValue();
+    T getDefaultValue();
 
-	Tag toTag(T value);
+    Tag toTag(T value);
 
-	T fromTag(Tag tag);
+    T fromTag(Tag tag);
 }

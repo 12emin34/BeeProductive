@@ -18,21 +18,15 @@
   "item.beeproductive.bi_skin_instant_nectar": "Instant Cosmetic Nectar - Bi Flag",
   "item.beeproductive.pan_skin_instant_nectar": "Instant Cosmetic Nectar - Pan Flag",
   "item.beeproductive.ace_skin_instant_nectar": "Instant Cosmetic Nectar - Ace Flag",
-
   "itemGroup.beeproductive.tools": "Bee Productive: Tools",
   "itemGroup.beeproductive.nectars": "Bee Productive: Nectars",
-
   "block.beeproductive.bee_feeder": "Bee Feeder",
-
   "honey.beeproductive.ender": "the End",
-
   "nectar.beeproductive.none": "none",
-
   "trait.beeproductive.nocturnal": "Nocturnal",
   "trait.beeproductive.weatherproof": "Weatherproof",
   "trait.beeproductive.pacifist": "Pacifist",
   "trait.beeproductive.skin": "Skin",
-
   "msg.beeproductive.honey_flavor": "The honey tastes like %s",
   "msg.beeproductive.honey_vanilla": "The honey doesn't have a noticeable taste",
   "msg.beeproductive.no_honey": "There isn't enough honey to taste yet",

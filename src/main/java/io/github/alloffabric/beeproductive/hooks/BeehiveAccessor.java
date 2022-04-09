@@ -4,9 +4,9 @@ import io.github.alloffabric.beeproductive.api.HoneyFlavor;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 
 public interface BeehiveAccessor {
-	Object2IntMap<HoneyFlavor> beeproductive$getHoneyFlavors();
+    Object2IntMap<HoneyFlavor> beeproductive$getHoneyFlavors();
 
-	void beeproductive$addHoneyFlavor(HoneyFlavor flavor);
+    void beeproductive$addHoneyFlavor(HoneyFlavor flavor);
 
-	void beeproductive$harvestHoneyFlavor(HoneyFlavor flavor);
+    void beeproductive$harvestHoneyFlavor(HoneyFlavor flavor);
 }

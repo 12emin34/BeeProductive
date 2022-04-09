@@ -21,24 +21,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(HiveAnalyzerItem.class)
 public class MixinHiveAnalyzer {
 
-	@Inject(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getItemCooldownManager()Lnet/minecraft/entity/player/ItemCooldownManager;"))
-	public void injectFlavorMessage(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
-		World world = context.getWorld();
-		BlockPos pos = context.getBlockPos();
-		BlockState state = world.getBlockState(pos);
-		if (state.getBlock() instanceof BeehiveProvider) {
-			Beehive hive = ((BeehiveProvider) state.getBlock()).getBeehive(world, pos, state);
-			if (hive.getHoneyLevel() >= 5) {
-				HoneyFlavor flavor = hive.getFlavorToHarvest();
-				if (flavor != BeeProdHoneys.VANILLA) {
-					Identifier flavorId = BeeProductive.HONEY_FLAVORS.getId(flavor);
-					context.getPlayer().addChatMessage(new TranslatableText("msg.beeproductive.honey_flavor", new TranslatableText("honey." + flavorId.getNamespace() + "." + flavorId.getPath()).asString()), false);
-				} else {
-					context.getPlayer().addChatMessage(new TranslatableText("msg.beeproductive.honey_vanilla"), false);
-				}
-			} else {
-				context.getPlayer().addChatMessage(new TranslatableText("msg.beeproductive.no_honey"), false);
-			}
-		}
-	}
+    @Inject(method = "useOnBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getItemCooldownManager()Lnet/minecraft/entity/player/ItemCooldownManager;"))
+    public void injectFlavorMessage(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
+        World world = context.getWorld();
+        BlockPos pos = context.getBlockPos();
+        BlockState state = world.getBlockState(pos);
+        if (state.getBlock() instanceof BeehiveProvider) {
+            Beehive hive = ((BeehiveProvider) state.getBlock()).getBeehive(world, pos, state);
+            if (hive.getHoneyLevel() >= 5) {
+                HoneyFlavor flavor = hive.getFlavorToHarvest();
+                if (flavor != BeeProdHoneys.VANILLA) {
+                    Identifier flavorId = BeeProductive.HONEY_FLAVORS.getId(flavor);
+                    context.getPlayer().sendMessage(new TranslatableText("msg.beeproductive.honey_flavor", new TranslatableText("honey." + flavorId.getNamespace() + "." + flavorId.getPath()).asString()), false);
+                } else {
+                    context.getPlayer().sendMessage(new TranslatableText("msg.beeproductive.honey_vanilla"), false);
+                }
+            } else {
+                context.getPlayer().sendMessage(new TranslatableText("msg.beeproductive.no_honey"), false);
+            }
+        }
+    }
 }

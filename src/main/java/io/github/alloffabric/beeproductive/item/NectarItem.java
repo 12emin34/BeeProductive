@@ -9,35 +9,36 @@ import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class NectarItem extends Item {
-	public static final Map<Nectar, Item> NECTAR_MAP = new HashMap<>();
+    public static final Map<Nectar, Item> NECTAR_MAP = new HashMap<>();
 
-	protected final Nectar nectar;
+    protected final Nectar nectar;
 
-	public NectarItem(Nectar nectar, Settings settings) {
-		super(settings);
-		this.nectar = nectar;
-		NECTAR_MAP.put(nectar, this);
-	}
+    public NectarItem(Nectar nectar, Settings settings) {
+        super(settings);
+        this.nectar = nectar;
+        NECTAR_MAP.put(nectar, this);
+    }
 
-	@Override
-	public boolean useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-		if (entity instanceof BeeEntity) {
-			BeeEntity bee = (BeeEntity)entity;
-			BeeComponent component = BeeProductive.BEE_COMPONENT.get(bee);
-			component.setNectar(nectar);
-			((BeeEntityAccessor)bee).beeproductive$setNectar(true);
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        if (entity instanceof BeeEntity) {
+            BeeEntity bee = (BeeEntity) entity;
+            BeeComponent component = BeeProductive.BEE_COMPONENT.get(bee);
+            component.setNectar(nectar);
+            ((BeeEntityAccessor) bee).beeproductive$setNectar(true);
+            return ActionResult.SUCCESS;
+        }
+        return ActionResult.FAIL;
+    }
 
-	public Nectar getNectar() {
-		return nectar;
-	}
+    public Nectar getNectar() {
+        return nectar;
+    }
 }

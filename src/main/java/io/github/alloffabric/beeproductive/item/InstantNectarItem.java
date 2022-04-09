@@ -7,40 +7,41 @@ import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class InstantNectarItem extends Item {
-	public static final Map<Nectar, Item> INSTANT_NECTAR_MAP = new HashMap<>();
+    public static final Map<Nectar, Item> INSTANT_NECTAR_MAP = new HashMap<>();
 
-	protected final Nectar nectar;
+    protected final Nectar nectar;
 
-	public InstantNectarItem(Nectar nectar, Settings settings) {
-		super(settings);
-		this.nectar = nectar;
-		INSTANT_NECTAR_MAP.put(nectar, this);
-	}
+    public InstantNectarItem(Nectar nectar, Settings settings) {
+        super(settings);
+        this.nectar = nectar;
+        INSTANT_NECTAR_MAP.put(nectar, this);
+    }
 
-	@Override
-	public boolean useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-		if (entity.getEntityWorld().isClient) return false;
-		if (entity instanceof BeeEntity) {
-			BeeEntity bee = (BeeEntity)entity;
-			nectar.onApply(bee, DummyHive.INSTANCE);
-			stack.decrement(1);
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        if (entity.getEntityWorld().isClient) return ActionResult.FAIL;
+        if (entity instanceof BeeEntity) {
+            BeeEntity bee = (BeeEntity) entity;
+            nectar.onApply(bee, DummyHive.INSTANCE);
+            stack.decrement(1);
+            return ActionResult.SUCCESS;
+        }
+        return ActionResult.FAIL;
+    }
 
-	public Nectar getNectar() {
-		return nectar;
-	}
+    public Nectar getNectar() {
+        return nectar;
+    }
 
-	@Override
-	public boolean hasEnchantmentGlint(ItemStack stack) {
-		return true;
-	}
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        return true;
+    }
 }

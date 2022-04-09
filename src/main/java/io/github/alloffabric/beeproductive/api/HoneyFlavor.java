@@ -8,25 +8,25 @@ import net.minecraft.item.ItemStack;
  */
 //TODO: loot tables instead?
 public class HoneyFlavor {
-	private ItemStack sheared;
-	private ItemStack bottled;
+    private ItemStack sheared;
+    private ItemStack bottled;
 
-	public HoneyFlavor(ItemStack sheared, ItemStack bottled) {
-		this.sheared = sheared;
-		this.bottled = bottled;
-	}
+    public HoneyFlavor(ItemStack sheared, ItemStack bottled) {
+        this.sheared = sheared;
+        this.bottled = bottled;
+    }
 
-	/**
-	 * @return The result from using shears on a full hive.
-	 */
-	public ItemStack getSheared() {
-		return sheared.copy();
-	}
+    /**
+     * @return The result from using shears on a full hive.
+     */
+    public ItemStack getSheared() {
+        return sheared.copy();
+    }
 
-	/**
-	 * @return The result from using an empty bottle on a full hive.
-	 */
-	public ItemStack getBottled() {
-		return bottled.copy();
-	}
+    /**
+     * @return The result from using an empty bottle on a full hive.
+     */
+    public ItemStack getBottled() {
+        return bottled.copy();
+    }
 }
